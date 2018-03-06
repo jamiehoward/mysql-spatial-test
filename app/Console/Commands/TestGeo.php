@@ -41,12 +41,10 @@ class TestGeo extends Command
      */
     public function handle()
     {
-        // POINT(-73.9878441 40.7484404)
-
         $input = new Point($this->argument('latitude'), $this->argument('longitude'));
+
         $distance = self::MILE_DISTANCE * $this->argument('distance');
 
-        // 163
         $results = Place::distance('location', $input, $distance);
 
         foreach ($results->get() as $place) {
